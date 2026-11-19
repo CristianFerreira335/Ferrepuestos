@@ -1,4 +1,4 @@
-
+import API_URL from "./config";
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -21,7 +21,7 @@ const [error, setError] = useState("");
 // Obtener productos desde MongoDB
 useEffect(() => {
 
-  fetch("http://localhost:5000/api/productos")
+  fetch(`${API_URL}/api/productos`)
 
     .then((respuesta) => {
       if (!respuesta.ok) {

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config";
 
 function Admin() {
 
@@ -27,7 +28,7 @@ function Admin() {
     try {
 
       const respuesta = await fetch(
-        "http://localhost:5000/api/productos"
+        `${API_URL}/api/productos`
       );
 
       const datos = await respuesta.json();
@@ -80,7 +81,7 @@ function Admin() {
     try {
 
       const respuesta = await fetch(
-        "http://localhost:5000/api/productos",
+        `${API_URL}/api/productos`,
         {
           method: "POST",
           headers: {
@@ -148,7 +149,7 @@ function Admin() {
     try {
 
       const respuesta = await fetch(
-        `http://localhost:5000/api/productos/${editando}`,
+        `${API_URL}/api/productos/${editando}`,
         {
           method: "PUT",
           headers: {
@@ -205,7 +206,7 @@ function Admin() {
     try {
 
       const respuesta = await fetch(
-        `http://localhost:5000/api/productos/${id}`,
+        `${API_URL}/api/productos/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -376,21 +377,22 @@ function Admin() {
                 <td>{producto.categoria}</td>
                 <td>{producto.stock}</td>
 
-              <td>
+                <td>
 
-                    <button
-                        onClick={() => prepararEdicion(producto)}
-                    >
-                        Editar
-                    </button>
+                  <button
+                    onClick={() => prepararEdicion(producto)}
+                  >
+                    Editar
+                  </button>
 
-                    <button
-                        onClick={() => eliminarProducto(producto._id)}
-                    >
-                        Eliminar
-                    </button>
+                  <button
+                    onClick={() => eliminarProducto(producto._id)}
+                  >
+                    Eliminar
+                  </button>
 
-                    </td>
+                </td>
+
               </tr>
 
             ))}
